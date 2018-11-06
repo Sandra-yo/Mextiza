@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Usuario": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Sucursal": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Direccion": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Telefono": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Pedido": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "ProductoPedido": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Producto": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "VoucherPedido": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Voucher": {
+    "dataSource": "mongo",
+    "public": true
+  }
+}

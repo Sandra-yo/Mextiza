@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://omar:123@localhost/mextiza",
+    "database": "mextiza",
+    "password": "123",
+    "name": "mongo",
+    "user": "omar",
+    "connector": "mongodb"
+  }
+}

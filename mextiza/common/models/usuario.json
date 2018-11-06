@@ -1,0 +1,50 @@
+{
+  "name": "Usuario",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "hidden": [
+    "emailVerified"
+  ],
+  "properties": {
+  },
+  "validations": [],
+  "relations": {
+    "telefono": {
+      "type": "belongsTo",
+      "model": "Telefono",
+      "foreignKey": "telefonoId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "direccion": {
+      "type": "belongsTo",
+      "model": "Direccion",
+      "foreignKey": "direccionId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "sucursales": {
+      "type": "hasMany",
+      "model": "Sucursal",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "pedidos": {
+      "type": "hasMany",
+      "model": "Pedido",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

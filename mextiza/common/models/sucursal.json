@@ -1,0 +1,64 @@
+{
+  "name": "Sucursal",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "telefono": {
+      "type": "belongsTo",
+      "model": "Telefono",
+      "foreignKey": "telefonoId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "direccion": {
+      "type": "belongsTo",
+      "model": "Direccion",
+      "foreignKey": "direccionId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "usuarioId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "pedido": {
+      "type": "hasOne",
+      "model": "Pedido",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
