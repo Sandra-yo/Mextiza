@@ -1,5 +1,6 @@
 function modal(){
   location.href = "login.html";
+  console.log(",,,");
 }
 function carrito(){
   location.href = "carrito.html";
@@ -9,7 +10,7 @@ function hist(){
 }
 function prod(){
   console.log(",,");
-  location.href = "Productos.html";
+  location.href = "productosMuestra.html";
 }
 window.onload = function() {
 
