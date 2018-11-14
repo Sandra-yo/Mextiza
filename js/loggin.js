@@ -1,49 +1,79 @@
-function modal(){
-  location.href = "login.html";
-
-}
-function carrito(){
-  location.href = "carrito.html";
-}
-function hist(){
-  location.href = "Historia.html";
-}
-function prod(){
-  location.href = "productosMuestra.html";
-}
-function entrar(){
-  console.log(contras + email);
-  //let promesaEntrada= new promise((resolve,reject)=>{});
-  let email=$("#InputEmail").val();
-  let contras=$("#InputPassword").val();
-  $.ajax({
-    method: "POST",
-    url: "http://...../"
-  }).done(function(data) {
-    alert(data); // imprimimos la respuesta
-  }).fail(function() {
-    alert("Algo salió mal");
-  }).always(function() {
-    alert("Siempre se ejecuta")
-  });
-
-}
-
 window.onload = function() {
+$("#loggin").on("click", function () {  
+  location.href = "login.html";
+});
+$("#hist").on("click", function () {  
+  location.href = "Historia.html";
+});
+$("#prod").on("click", function () {  
+  location.href = "productosMuestra.html";
+});
+$("#compras").on("click", function () {  
+  location.href = "carrito.html";
+});
 
+$("#log").on("click",function () {
+  console.log(":W");
+  localStorage.email=$("#InputEmail").val();
+  localStorage.contraseña=$("#InputPassword").val();
+  iniciarSesion();
+});
 
-var inicio=document.getElementById("loggin");
-inicio.addEventListener("click", modal, false);
+}
 
-var histo=document.getElementById("hist");
-histo.addEventListener("click", hist, false);
+function cerrarSesion() {
+  var form = new FormData();
+form.append("email", localStorage.email);
+form.append("password", localStorage.contraseña);
 
-var produ=document.getElementById("prod");
-produ.addEventListener("click", prod, false);
+var settings = {
+"async": true,
+"crossDomain": true,
+"url": "http://localhost:3000/api/Usuarios/logout",
+"method": "POST",
+"headers": {
+  "authorization": localStorage.token,
+  "cache-control": "no-cache",
+  "postman-token": "ecdf5626-451f-cdf1-db09-ec1ed04dc248"
+},
+"processData": false,
+"contentType": false,
+"mimeType": "multipart/form-data",
+"data": form
+}
 
-var compras=document.getElementById("compras");
-compras.addEventListener("click", carrito, false);
+$.ajax(settings).done(function (response) {
+console.log(response);
+localStorage.token=null;
+console.log("log out");
 
-var log=document.getElementById("log");
-log.addEventListener("click", entrar, false);
+});
+  
+}
+
+function iniciarSesion() {
+   
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://localhost:3000/api/Usuarios/login",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded",
+    "cache-control": "no-cache",
+    "postman-token": "8b8efe41-89db-9779-0f9f-cf86168cf953"
+  },
+  "data": {
+    "email": localStorage.email,
+    "password": localStorage.contraseña
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  localStorage.token=response['id'];
+  console.log(response);
+  location.href = "index.html";
+  
+
+});
 }
