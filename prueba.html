@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Peticiones AJAX con JS</title>
+
+</head>
+
+<body>
+
+<body>
+     <p id="parrafo">¿Cuál es tu correo?</p>
+    <button id="cambiar">¿Disculpa?</button>
+    <input type="email" id="correo">
+    <button id="enviar">Enviar</button>
+    <p id=”respuesta”></p>
+    <script src="ejemplo.js" type="text/javascript"></script>
+</body>
+</body>
+<script type="text/javascript">
+
+var l=document.getElementById("cambiar");
+l.addEventListener("click",cambiar);
+
+function cambiar(){
+var xhr = new XMLHttpRequest();
+
+xhr.open("GET","educado.txt",true);
+xhr.send();
+
+xhr.onreadystatechange = function(){
+  if(xhr.readyState == 4 && xhr.status == 200){
+      document.getElementById("parrafo").innerHTML = xhr.responseText;
+  }
+}
+}
+</script>
+</html>
