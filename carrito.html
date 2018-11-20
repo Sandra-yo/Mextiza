@@ -3,12 +3,18 @@
 <head>
     <title>Mextiza - Inicio</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="wigth=sevice-width, initial-scale=1, shrink-to-tfit=no">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/carrito.css">
+    <script src="js/loggin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="js/usuarioLogueado.js"></script>
-
+    <script src="js/compra.js"></script>
+    
+<script>
+usuario();
+transaccion();
+</script>
     <script src="js/loggin.js"></script>
     <style>
 
@@ -83,19 +89,22 @@
     </button>
 
     <div class="collapse navbar-collapse" id = "uno">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="index.html" class = "nav-link">Inicio</a></li>
-        <li class="nav-item" id="hist"><a href="#" class = "nav-link">Historia</a></li>
-        <li class="nav-item" id="prod"><a href="#" class = "nav-link">Productos</a></li>
-        <li class="nav-item" id="compras"><a href="#" class = "nav-link">Compras</a></li>
-        <li class="nav-item dropdown"><a href="#" class = "nav-link dropdown-tooggle" data-toggle = "dropdown">Contacto</a>
-           <div class="dropdown-menu">
-               <a href="#" class="dropdown-item">Sucursales</a>
-               <a href="#" class="dropdown-item">Comentarios</a>
-           </div>
-           <li style="width:57%" class="nav-item " id="espacio"><a href="#" class = "nav-link"></a></li>
-       </li><li class="nav-item" id="loggin"><a href="#" class = "nav-link">Inicio de Sesion</a></li>
-     </ul>
+        <ul class="navbar-nav">
+
+            <li class="nav-item"><a href="index.html" class = "nav-link">Inicio</a></li>
+            <li class="nav-item" id="hist"><a href="Historia.html" class = "nav-link">Historia</a></li>
+             <li class="nav-item" id="prod"><a href="productosMuestra.html" class = "nav-link">Productos</a></li>
+             <li class="nav-item" id="compras"><a href="carrito.html" class = "nav-link">Compras</a></li>
+            <li class="nav-item dropdown"><a href="#" class = "nav-link dropdown-tooggle" data-toggle = "dropdown">Contacto</a>
+                 <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Sucursales</a>
+                    <a href="#" class="dropdown-item">Comentarios</a>
+                </div>
+            </li>
+            <li style="width:57%" class="nav-item " id="espacio"><a href="#" class = "nav-link"></a></li>
+            <li class="nav-item" id="loggin"><a href="#" class = "nav-link">Inicio de Sesion</a></li>
+     
+          </ul>
      </div>
     </nav>
    <center>
@@ -129,7 +138,7 @@
             </div>
         </div>
         <div style="margin-left:0px;" class="row col-sm-12">
-        <button  type="button" class="col-sm-12 btn btn-info">Ordenar</button>
+        <button  type="button" id="ordenar" class="col-sm-12 btn btn-info">Ordenar</button>
         </div>
 
 
@@ -157,7 +166,8 @@
 </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src = "js/bootstrap.min.js"></script>
 </body>
