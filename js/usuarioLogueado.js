@@ -2,10 +2,10 @@ function usuario() {
 window.onload = function() {  
 console.log("::::");
 
-if(localStorage.token!="null"){
+if(localStorage.token!="null" && this.localStorage.token!=undefined && this.localStorage.token!="undefined"){
     console.log(":::");
     
-   console.log(localStorage.token=="null");
+   console.log(localStorage.token=="undefined" );
     $("#loggin a").html("Cerrar sesion");
     $("#loggin").addClass("SI");
     $("#compras").css("display","block");

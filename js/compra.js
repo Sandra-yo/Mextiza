@@ -58,8 +58,31 @@ function activa() {
             }
         
     $("#ordenar").on("click",function () {
-        localStorage.fechaPedido=new Date();
+        var fecha=new Date();
+        var diaP=fecha.getDate();
+        var mesP=fecha.getMonth();
+        var añoP=fecha.getFullYear();
+        localStorage.fechaPedido=diaP+"/"+mesP+"/"+añoP;
         location.href="Productos.html";
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:3000/api/Pedidos",
+            "method": "POST",
+            "headers": {
+              "Authorization": localStorage.token,
+              "Content-Type": "application/json",
+              "cache-control": "no-cache",
+              "Postman-Token": "9a20254a-b611-4a07-9d28-7ec0be51a074"
+            },
+            "processData": false,
+            "data": "{\n  \"estatus\": \"pendiente\",\n  \"fechaPedido\": \""+localStorage.fechaPedido+"\",\n  \"fechaPagado\": \"pendiente\",\n  \"sucursalId\": \"5c006d62798c353c57007b93\",\n  \"usuarioId\": \"5c006801798c353c57007b90\"\n}"
+          }
+          
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
         
     });
 }
