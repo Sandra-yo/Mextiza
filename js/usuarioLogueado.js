@@ -2,12 +2,16 @@ function usuario() {
 window.onload = function() {  
 console.log("::::");
 
-if(localStorage.token!="null" && localStorage.token!=undefined){
+if(localStorage.token!="null" && this.localStorage.token!=undefined && this.localStorage.token!="undefined"){
     console.log(":::");
     
+   console.log(localStorage.token=="undefined" );
+
+   sucursales();
     $("#loggin a").html("Cerrar sesion");
     $("#loggin").addClass("SI");
     $("#compras").css("display","block");
+
 
     $("#compras").on("click",function () {
         location.href = "carrito.html";
@@ -64,4 +68,34 @@ $("#ordenar").on("click",function() {
       
         }
     }
+}
+
+function sucursales() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:3000/api/Sucursals",
+        "method": "GET",
+        "headers": {
+          "Authorization": "cyBJCrcNKSvE5jvjO5WYoVbPlIUYEX3fDhZCUWJ0sQivLKXyf3NDoisIZwA6kKCl",
+          "Content-Type": "application/json",
+          "cache-control": "no-cache",
+          "Postman-Token": "dfa4248b-6784-495a-a3ab-3a016ed8edd1"
+        },
+        "processData": false,
+        
+      }
+      
+      $.ajax(settings).done(function (response) {
+          //esta solucion es temporal
+          for (let index = 0; index < response.length; index++) {
+            if(response[index].usuarioId==localStorage.usuarioId){
+                localStorage.sucursalId=response[index].id;
+                console.log(response[index].id);
+            }
+              
+          }
+        
+
+      });
 }

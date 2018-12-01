@@ -5,6 +5,8 @@
   "options": {
     "validateUpsert": true
   },
+
+
   "properties": {
     "nombre": {
       "type": "string",

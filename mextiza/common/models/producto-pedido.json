@@ -5,7 +5,12 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "cantidad":{
+      "type":"number",
+      "required":true
+    }
+  },
   "validations": [],
   "relations": {
     "pedido": {
