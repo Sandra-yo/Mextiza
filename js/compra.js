@@ -64,7 +64,24 @@ function activa() {
         var añoP=fecha.getFullYear();
         localStorage.fechaPedido=diaP+"/"+mesP+"/"+añoP;
         location.href="Productos.html";
+//alert("miau");
+ordenemos();
+       
+        
+    });
+    $("#cantMacha").on("change",function(){
+          console.log(this);
+          
+        
+    }
+    );
+    $("#cantSM").on("change",function(){
+        
+    }
+    );
 
+
+    function ordenemos() {
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -77,12 +94,33 @@ function activa() {
               "Postman-Token": "9a20254a-b611-4a07-9d28-7ec0be51a074"
             },
             "processData": false,
-            "data": "{\n  \"estatus\": \"pendiente\",\n  \"fechaPedido\": \""+localStorage.fechaPedido+"\",\n  \"fechaPagado\": \"pendiente\",\n  \"sucursalId\": \"5c006d62798c353c57007b93\",\n  \"usuarioId\": \"5c006801798c353c57007b90\"\n}"
+            "data": "{\n  \"estatus\": \"pendiente\",\n  \"fechaPedido\": \""+localStorage.fechaPedido+"\",\n  \"fechaPagado\": \"pendiente\",\n  \"sucursalId\": \""+localStorage.sucursalId+"\",\n  \"usuarioId\": \""+localStorage.usuarioId+"\"\n}"
+          }
+          
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+            
+          });
+    }
+    function vistaProductos() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:3000/api/ProductoPedidos",
+            "method": "GET",
+            "headers": {
+              "Authorization": "cyBJCrcNKSvE5jvjO5WYoVbPlIUYEX3fDhZCUWJ0sQivLKXyf3NDoisIZwA6kKCl",
+              "Content-Type": "application/json",
+              "cache-control": "no-cache",
+              "Postman-Token": "b060d876-4444-4368-af75-05b8799916b7"
+            },
+            "processData": false,
+            "data": "{\n  \"pedidoId\": \"5c006e10798c353c57007b94\",\n  \"productoId\": \"5c0193930c118f14256abc6b\"\n}"
           }
           
           $.ajax(settings).done(function (response) {
             console.log(response);
           });
-        
-    });
+          
+    }
 }
