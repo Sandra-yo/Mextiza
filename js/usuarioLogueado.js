@@ -55,31 +55,7 @@ $("#ordenar").on("click",function() {
     }
 }
 
-function identificacionUsuarios() {
-    var form = new FormData();
-form.append("id", localStorage.usuarioId);
 
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://localhost:3000/api/Usuarios/5c006801798c353c57007b90",
-  "method": "GET",
-  "headers": {
-    "Authorization": localStorage.token,
-    "Content-Type": "application/x-www-form-urlencoded",
-    "cache-control": "no-cache",
-    "Postman-Token": "ca57e4b9-b934-4f10-84b4-a906ab377ac5"
-  },
-  "processData": false,
-  "contentType": false,
-  "mimeType": "multipart/form-data",
-  "data": form
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-}
 function sucursales() {
     var settings = {
         "async": true,
