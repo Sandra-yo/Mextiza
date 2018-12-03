@@ -38,6 +38,7 @@ $(".SI").on("click",function () {
         $("#loggin a").html("Iniciar sesion");
         $("#loggin").removeClass("SI");
         $("#compras").css("display","none");
+        
 $("#ordenar").on("click",function() {
     console.log(":3");
     

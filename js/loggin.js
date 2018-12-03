@@ -69,39 +69,8 @@ var settings = {
 $.ajax(settings).done(function (response) {
   localStorage.token=response['id'];
   localStorage.usuarioId=response['userId'];
-  console.log(response);
+ // console.log(response);
   location.href = "index.html";
   
-
 });
 }
-
-/*
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://localhost:3000/api/Pedidos",
-  "method": "POST",
-  "headers": {
-    "authorization": "AdobJBPkVGwPn6CvOkUiM7iT7AA9hK2sFHknvPZskXPD6DpLkjG9tqi1xImQnoUG",
-    "content-type": "application/json",
-    "cache-control": "no-cache",
-    "postman-token": "a620d99b-c9ea-6638-a112-e9e4a4f454b1"
-  },
-  "processData": false,
-  "data": "{\n  \"estatus\": \"pendiente\",\n  \"fechaPedido\": \"20-11-18\",\n  \"fechaPagado\": \"20-11-18\",\n  \"sucursalId\": \"5bf3780615338534589f9528\",\n  \"usuarioId\": \"be3a52e432fba13bd6547c2\"\n}"
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-
-
-
-*/
-
-
-
-
-
-
