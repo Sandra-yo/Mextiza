@@ -63,22 +63,12 @@ function activa() {
         var mesP=fecha.getMonth();
         var añoP=fecha.getFullYear();
         localStorage.fechaPedido=diaP+"/"+mesP+"/"+añoP;
-        location.href="Productos.html";
+   //    location.href="Productos.html";
 //alert("miau");
-ordenemos();
-       
-        
+    ordenemos();
+     
     });
-    $("#cantMacha").on("change",function(){
-          console.log(this);
-          
-        
-    }
-    );
-    $("#cantSM").on("change",function(){
-        
-    }
-    );
+    
 
 
     function ordenemos() {
@@ -98,7 +88,21 @@ ordenemos();
           }
           
           $.ajax(settings).done(function (response) {
-            console.log(response);
+            console.log(response.id);
+            var cMacha=$("#cantMacha").val();
+            var cSanM=$("#cantSM").val();
+
+            if(!cMacha==""){
+                console.log(cMacha+"-- "+response.id+"--"+localStorage.SalsaM);
+                
+                productosPedido(cMacha,response.id,localStorage.SalsaM);
+               
+            }
+            if(!cSanM==""){
+                console.log(cSanM+"-- "+response.id+"--"+localStorage.SalsaSM);
+
+                productosPedido(cSanM,response.id,localStorage.SalsaSM);
+         }
             
           });
     }
@@ -123,4 +127,25 @@ ordenemos();
           });
           
     }
+}
+function productosPedido(cant,pedido,producto) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:3000/api/ProductoPedidos",
+        "method": "POST",
+        "headers": {
+          "Authorization": localStorage.token,
+          "Content-Type": "application/json",
+          "cache-control": "no-cache",
+          "Postman-Token": "1ca060de-a959-4d3d-9ea9-e627941fcc46"
+        },
+        "processData": false,
+        "data": "{\n  \"cantidad\": "+cant+",\n  \"pedidoId\": \"5c030ca6f8404e2321adc2ad\",\n  \"productoId\": \"5c032881f8404e2321adc2b0\"\n}"
+      }
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+    
 }

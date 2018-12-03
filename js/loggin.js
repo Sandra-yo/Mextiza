@@ -69,22 +69,8 @@ var settings = {
 $.ajax(settings).done(function (response) {
   localStorage.token=response['id'];
   localStorage.usuarioId=response['userId'];
-  console.log(response);
+ // console.log(response);
   location.href = "index.html";
   
-
 });
 }
-
-/*
-
-
-
-
-*/
-
-
-
-
-
-

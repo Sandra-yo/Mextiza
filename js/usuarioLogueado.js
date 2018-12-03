@@ -3,16 +3,17 @@ window.onload = function() {
 console.log("::::");
 
 if(localStorage.token!="null" && this.localStorage.token!=undefined && this.localStorage.token!="undefined"){
-    console.log(":::");
     
-   console.log(localStorage.token=="undefined" );
+    
+
 
    sucursales();
     $("#loggin a").html("Cerrar sesion");
     $("#loggin").addClass("SI");
     $("#compras").css("display","block");
+    console.log(":::");
 
-
+    productos();
     $("#compras").on("click",function () {
         location.href = "carrito.html";
         
@@ -36,8 +37,8 @@ $(".SI").on("click",function () {
         $("#loggin a").html("Iniciar sesion");
         $("#loggin").removeClass("SI");
         $("#compras").css("display","none");
+/*
 $("#ordenar").on("click",function() {
-    console.log(":3");
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -57,18 +58,18 @@ $("#ordenar").on("click",function() {
         console.log(response);
       });
     
-});
+});*/
  
         $("#loggin").on("click", function () {  
             console.log(":::");
             
             location.href = "login.html";
        });
-      console.log(";");
       
         }
     }
 }
+
 
 function sucursales() {
     var settings = {
@@ -77,7 +78,7 @@ function sucursales() {
         "url": "http://localhost:3000/api/Sucursals",
         "method": "GET",
         "headers": {
-          "Authorization": "cyBJCrcNKSvE5jvjO5WYoVbPlIUYEX3fDhZCUWJ0sQivLKXyf3NDoisIZwA6kKCl",
+          "Authorization": localStorage.token,
           "Content-Type": "application/json",
           "cache-control": "no-cache",
           "Postman-Token": "dfa4248b-6784-495a-a3ab-3a016ed8edd1"
@@ -88,14 +89,40 @@ function sucursales() {
       
       $.ajax(settings).done(function (response) {
           //esta solucion es temporal
+          
           for (let index = 0; index < response.length; index++) {
             if(response[index].usuarioId==localStorage.usuarioId){
                 localStorage.sucursalId=response[index].id;
-                console.log(response[index].id);
             }
               
           }
         
 
       });
+      
+}
+
+function productos() {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:3000/api/Productos?=",
+        "method": "GET",
+        "headers": {
+          "Authorization": localStorage.token,
+          "": "",
+          "cache-control": "no-cache",
+          "Postman-Token": "b8fed307-c7ab-441c-acfe-d55b834c16e5"
+        }
+      }
+      console.log(settings);
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      }).fail(function (response) {
+        localStorage.SalsaM="5c032859f8404e2321adc2af";
+        localStorage.SalsaSM="5c032881f8404e2321adc2b0";
+        
+      });;
+    
 }
