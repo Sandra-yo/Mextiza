@@ -49,6 +49,8 @@ console.log("log out");
   
 }
 function identificacionUsuarios() {
+  console.log(";;");
+  
     var form = new FormData();
 form.append("id", localStorage.usuarioId);
 
@@ -70,10 +72,15 @@ var settings = {
 }
 
 $.ajax(settings).done(function (response) {
- var resp=jQuery.parseJSON(response)
+  console.log(":E");
+ var resp=jQuery.parseJSON(response);
   
   localStorage.tipoUsuario=resp['realm'];
 
+}).fail(function(response){
+  localStorage.tipoUsuario="proveedor";
+  
+  
 });
 }
 
@@ -100,6 +107,7 @@ $.ajax(settings).done(function (response) {
   localStorage.usuarioId=response['userId'];
   console.log(response);
   identificacionUsuarios();
+  console.log(localStorage.tipoUsuario=="proveedor");
   if(localStorage.tipoUsuario=="proveedor"){
     location.href = "Administrador/pedidos.html";
   }else{
