@@ -1,34 +1,63 @@
 window.onload= function(){
-       listar();    
+       listarTabla();    
 
-    function listar() {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "http://localhost:3000/api/Pedidos",
-            "method": "GET",
-            "headers": {
-              "Authorization": "8wdxuM28swZN8RtSbMUI7cueoW47xyxtb18g9mx2OQ3CXukDQCYgOvPUsA4tMBXX",
-              "cache-control": "no-cache",
-              "Postman-Token": "39e78d81-5fe9-4aec-b4e3-f3c5a58c7ce0"
-            }
-          }
-          
-          $.ajax(settings).done(function (response) {
-            console.log(response);
-            if(tablalista && nombrelisto){
-             console.log("pruebas"+localStorage.nombre);
-             
-            for (let index = 0; index < response.length; index++) {
-                identificacionSucursales(response[index].sucursalId);
-                localStorage.idT=response[index].id;
-                localStorage.fechaT=response[index].fechaPedido;
-                localStorage.autor=response[index].estatus;
-                var check=((response[index].estatus!="pendiente") ?"checked":"");
-                
-                $("tbody").append("<tr id="+localStorage.idT+">"+
-                "<td>"+localStorage.idT+"</td>"+
+    
+    function click () {
+        console.log(";;");
+        
+       var id= $(this).attr("id");
+       $("#"+id+" input").attr("checked",true);
+    }
+function listarTabla() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:3000/api/ProductoPedidos?filter={%20%20%20%20%20%22include%22:[%20%20%20%20%20%20%20%20%20{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22pedido%22,%20%20%20%20%20%20%20%20%20%20%20%20%20%22scope%22:{%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22include%22:%22sucursal%22%20%20%20%20%20%20%20%20%20%20%20%20%20}%20%20%20%20%20%20%20%20%20},{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22producto%22%20%20%20%20%20%20%20%20%20}%20%20%20%20%20]%20}",
+        "method": "GET",
+        "headers": {
+          "Authorization": localStorage.token,
+          "Content-Type": "application/json",
+          "cache-control": "no-cache",
+          "Postman-Token": "bb656600-56cb-49d7-8171-745bf956b1ab"
+        },
+        "processData": false,
+        "data": ""
+      }
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        console.log(response[0].pedido);
+        for (let index = 0; index < response.length; index++) {
+            $("tbody").append("<tr id="+response[index].id+">"+
+                "<td>"+response[index].pedido.id+"</td>"+
+                "<td id=distribuidor>"+response[0].pedido.sucursal.nombre+"</td>"+
                 "<td></td>"+
+                "<td>BD</td>"+
+                "<td>BD</td>" + 
+                "<td>"+
+                "<div class='form-check'>"+
+                "<input class = 'form-check-input' type='checkbox' disabled ><label class='form-check-label' for='defaultCheck1'>Autorizado</label> "+   
+                "</div>"+
+                "</td>"+
+                "<td>"+
+                "<center>"+
+                "<button class='btn btn-success'>Autorizar</button>"+
+                "</center>"+
+                "</td>"               
+             
+             +"</tr>");
+            
+        }
+        
+      });
+}
+
+
+
+}
+/**$("tbody").append("<tr id="+localStorage.idT+">"+
+                "<td>"+localStorage.idT+"</td>"+
+                "<td id=distribuidor></td>"+
                 "<td>"+localStorage.fechaT+"</td>"+
                 "<td>BD</td>"+
                 "<td>BD</td>" + 
@@ -43,74 +72,4 @@ window.onload= function(){
                 "</center>"+
                 "</td>"               
              
-             +"</tr>");
-            }
-            }else{
-                console.log(":::");
-                
-            }
-                
-            
-          });
-    }
-    function click () {
-        console.log(";;");
-        
-       var id= $(this).attr("id");
-       $("#"+id+" input").attr("checked",true);
-    }
-    function tablalista(){
-     
-        while(("tbody").length!=1){
-            if(("tbody").length==1){
-                break;
-            }
-        }
-        
-    return true;
-    }
-    function nombrelisto(){
-     
-        while(localStorage.nombre==""){
-            if(localStorage.nombre!=""){
-                break;
-            }
-        }return true;
-    }
-    function identificacionSucursales(id) {
-        localStorage.nombre=""
-        
-        var form = new FormData();
-form.append("id", id);
-
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://localhost:3000/api/Sucursals",
-  "method": "GET",
-  "headers": {
-    "Authorization": "8wdxuM28swZN8RtSbMUI7cueoW47xyxtb18g9mx2OQ3CXukDQCYgOvPUsA4tMBXX",
-    "cache-control": "no-cache",
-    "Postman-Token": "03d6e042-6f28-4836-b6ab-e0ba11321b53"
-  },
-  "processData": false,
-  "contentType": false,
-  "mimeType": "multipart/form-data",
-  "data": form
-}
-var sucursal="Mext 0";
-
-$.ajax(settings).done(function (response) {
-
- var resp=jQuery.parseJSON(response);
- console.log(resp[0].nombre);
- 
-   localStorage.nombre=resp[0].nombre;
-   
-   
-});
-      }
-
-
-
-}
+             +"</tr>"); */
