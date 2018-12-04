@@ -111,7 +111,7 @@ $.ajax(settings).done(function (response) {
   if(localStorage.tipoUsuario=="proveedor"){
     location.href = "Administrador/pedidos.html";
   }else{
-  location.href = "index.html";
+  //location.href = "index.html";
   }
 });
 }
