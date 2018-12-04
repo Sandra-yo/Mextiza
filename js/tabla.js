@@ -26,14 +26,14 @@ function listarTabla() {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
-        console.log(response[0].pedido);
+        console.log(response[0].producto.nombre);
         for (let index = 0; index < response.length; index++) {
             $("tbody").append("<tr id="+response[index].id+">"+
                 "<td>"+response[index].pedido.id+"</td>"+
                 "<td id=distribuidor>"+response[index].pedido.sucursal.nombre+"</td>"+
-                "<td>"+response[index].pedido.sucursal.nombre+"</td>"+
-                "<td>BD</td>"+
-                "<td>BD</td>" + 
+                "<td>"+response[index].pedido.fechaPedido+"</td>"+
+                "<td>"+response[index].producto.nombre+"</td>"+
+                "<td>"+response[index].cantidad+"</td>" + 
                 "<td>"+
                 "<div class='form-check'>"+
                 "<input class = 'form-check-input' type='checkbox' disabled ><label class='form-check-label' for='defaultCheck1'>Autorizado</label> "+   

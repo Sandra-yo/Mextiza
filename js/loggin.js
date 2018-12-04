@@ -15,6 +15,10 @@ $("#log").on("click",function () {
   localStorage.contraseña=$("#InputPassword").val();
   iniciarSesion();
 });
+$("#nuevoDist").on("click",function () {
+  console.log(":::");
+  location.href="NuevoDistribuidor.html"
+});
 
 }
 
@@ -78,11 +82,12 @@ $.ajax(settings).done(function (response) {
   localStorage.tipoUsuario=resp['realm'];
 
 }).fail(function(response){
-  localStorage.tipoUsuario="proveedor";
+  //localStorage.tipoUsuario="proveedor";
   
   
 });
 }
+
 
 function iniciarSesion() {
    
