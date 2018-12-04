@@ -23,16 +23,18 @@ window.onload= function(){
                 identificacionSucursales(response[index].sucursalId);
                 localStorage.idT=response[index].id;
                 localStorage.fechaT=response[index].fechaPedido;
+                localStorage.autor=response[index].estatus;
+                var check=((response[index].estatus!="pendiente") ?"checked":"");
                 
-                $("tbody").append("<tr>"+
+                $("tbody").append("<tr id="+localStorage.idT+">"+
                 "<td>"+localStorage.idT+"</td>"+
-                "<td>"+localStorage.nombre+"</td>"+
+                "<td></td>"+
                 "<td>"+localStorage.fechaT+"</td>"+
                 "<td>BD</td>"+
                 "<td>BD</td>" + 
                 "<td>"+
                 "<div class='form-check'>"+
-                "<input class = 'form-check-input' type='checkbox' disabled><label class='form-check-label' for='defaultCheck1'>Autorizado</label> "+   
+                "<input class = 'form-check-input' type='checkbox' disabled "+check+"><label class='form-check-label' for='defaultCheck1'>Autorizado</label> "+   
                 "</div>"+
                 "</td>"+
                 "<td>"+
@@ -50,6 +52,12 @@ window.onload= function(){
                 
             
           });
+    }
+    function click () {
+        console.log(";;");
+        
+       var id= $(this).attr("id");
+       $("#"+id+" input").attr("checked",true);
     }
     function tablalista(){
      
