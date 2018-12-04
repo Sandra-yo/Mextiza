@@ -30,8 +30,8 @@ function listarTabla() {
         for (let index = 0; index < response.length; index++) {
             $("tbody").append("<tr id="+response[index].id+">"+
                 "<td>"+response[index].pedido.id+"</td>"+
-                "<td id=distribuidor>"+response[0].pedido.sucursal.nombre+"</td>"+
-                "<td></td>"+
+                "<td id=distribuidor>"+response[index].pedido.sucursal.nombre+"</td>"+
+                "<td>"+response[index].pedido.sucursal.nombre+"</td>"+
                 "<td>BD</td>"+
                 "<td>BD</td>" + 
                 "<td>"+
