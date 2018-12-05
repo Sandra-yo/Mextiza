@@ -9,7 +9,6 @@ function transaccion() {
 }
 function activa() {
     if(localStorage.token!="null"){
-        console.log(":::");
         
         
        console.log(localStorage.token=="null");
@@ -49,7 +48,6 @@ function activa() {
     });
      
             $("#loggin").on("click", function () {  
-                console.log(":::");
                 
                 location.href = "login.html";
            });
@@ -63,8 +61,6 @@ function activa() {
         var mesP=fecha.getMonth();
         var añoP=fecha.getFullYear();
         localStorage.fechaPedido=diaP+"/"+mesP+"/"+añoP;
-   //    location.href="Productos.html";
-//alert("miau");
     ordenemos();
      
     });
