@@ -48,6 +48,12 @@ function listarTabla() {
              +"</tr>");
             
         }
+        if(response==""){
+            console.log("::");
+        }else{
+            console.log(":W");
+            
+        }
         
       });
 }
