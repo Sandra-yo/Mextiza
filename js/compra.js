@@ -68,6 +68,7 @@ function activa() {
 
 
     function ordenemos() {
+        vistaProductos();
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -106,20 +107,19 @@ function activa() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/ProductoPedidos",
+            "url": "http://localhost:3000/api/Productos",
             "method": "GET",
             "headers": {
-              "Authorization": "cyBJCrcNKSvE5jvjO5WYoVbPlIUYEX3fDhZCUWJ0sQivLKXyf3NDoisIZwA6kKCl",
-              "Content-Type": "application/json",
+              "authorization": localStorage.token,
               "cache-control": "no-cache",
-              "Postman-Token": "b060d876-4444-4368-af75-05b8799916b7"
-            },
-            "processData": false,
-            "data": "{\n  \"pedidoId\": \"5c006e10798c353c57007b94\",\n  \"productoId\": \"5c0193930c118f14256abc6b\"\n}"
+              "postman-token": "07020a7e-fb91-cdf6-7367-4429f7fec51d"
+            }
           }
           
           $.ajax(settings).done(function (response) {
             console.log(response);
+            localStorage.SalsaM=response[0].id;
+            localStorage.SalsaSM=response[1].id;
           });
           
     }
@@ -137,7 +137,7 @@ function productosPedido(cant,pedido,producto) {
           "Postman-Token": "1ca060de-a959-4d3d-9ea9-e627941fcc46"
         },
         "processData": false,
-        "data": "{\n  \"cantidad\": "+cant+",\n  \"pedidoId\": \"5c030ca6f8404e2321adc2ad\",\n  \"productoId\": \"5c032881f8404e2321adc2b0\"\n}"
+        "data": "{\n  \"cantidad\": "+cant+",\n  \"pedidoId\": "+pedido+",\n  \"productoId\": "+producto+"\n}"
       }
       
       $.ajax(settings).done(function (response) {

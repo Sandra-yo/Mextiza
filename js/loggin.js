@@ -28,6 +28,13 @@ function nuevoUsuario() {
   var nombre=$("#nombre").val()+" "+$("#Apellidos").val();
   var correo=$("#correo").val();
   var pass=$("#password").val();
+  var numero=$("#telefono").val();
+  var calle=$("#calle").val();
+  var colonia=$("#colonia").val();
+  var cp=$("#CP").val();
+  var ciudad=$("#ciudad").val();
+  var estado=$("#estado").val();
+  
 
   var settings = {
     "async": true,
@@ -40,14 +47,84 @@ function nuevoUsuario() {
       "Postman-Token": "38041391-0ae4-4152-991e-8dfdae39bdd0"
     },
     "processData": false,
-    "data": "{\n  \"realm\": \"Distribuidor\",\n  \"username\": \""+nombre+"\",\n  \"email\": \""+correo+"\",\n  \"direccionId\": \"string\",\n  \"telefonoId\": \"string\",\n  \"password\": \""+pass+" \"\n}"
+    "data": "{\n  \"realm\": \"Distribuidor\",\n  \"username\": \""+nombre+"\",\n  \"email\": \""+correo+"\",\n  \"direccionId\": \"string\",\n  \"telefonoId\": \"string\",\n  \"password\": \""+pass+"\"\n}"
   }
   $.ajax(settings).done(function (response) {
     console.log(response);
+    localStorage.email=correo;
+    localStorage.contraseña=pass;
+    primerInicio();
+    numeroi(numero);
+    direccion(calle,colonia,cp,ciudad,estado);
+    modificaUsu(nombre,correo);
+    alert("Usuario creado exitosamente");
+    
     }).fail(function(response){
-      console.log(response);
+      console.log(response.password);
   });
   
+}
+function numeroi(numero) {
+  var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://localhost:3000/api/Telefonos",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "authorization": localStorage.token,
+    "cache-control": "no-cache",
+    "postman-token": "892cc3ab-8bff-7f3b-b7e5-124209b173d3"
+  },
+  "processData": false,
+  "data": "{\n  \"numero\": \""+numero+"\",\n  \"clave\": \"string\"\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+  localStorage.telefonoid=response['id'];
+});
+}
+function direccion(calle,colonia,cp,ciudad,estado) {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:3000/api/Direccions",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json",
+      "authorization": localStorage.token,
+      "cache-control": "no-cache",
+      "postman-token": "05fc3c31-fdca-b59f-22b2-82b28a36a178"
+    },
+    "processData": false,
+    "data": "{\n  \"calle\": \""+calle+"\",\n  \"colonia\": \""+colonia+"\",\n  \"cp\": \""+cp+"\",\n  \"ciudad\": \""+ciudad+"\",\n  \"estado\": \""+estado+"\"\n}"
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    localStorage.direccionid=response['id'];
+  });
+}
+function modificaUsu(nombre,correo) {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:3000/api/Usuarios/"+localStorage.usuarioId,
+    "method": "PUT",
+    "headers": {
+      "content-type": "application/json",
+      "authorization": localStorage.token,
+      "cache-control": "no-cache",
+      "postman-token": "8befc8b0-8ce3-421f-d4ab-cdb71b259d11"
+    },
+    "processData": false,
+    "data": "{\n  \"realm\": \"Distribuidor\",\n  \"username\": \""+nombre+"\",\n  \"email\": \""+correo+"\",\n  \"id\": \""+localStorage.userId+"\",\n  \"direccionId\": \""+localStorage.direccionid+"\",\n  \"telefonoId\": \""+localStorage.telefonoid+"\",\n  \"password\":\""+localStorage.contraseña+"\"\n}"
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 
 
@@ -114,6 +191,25 @@ $.ajax(settings).done(function (response) {
   
   
 });
+}
+function primerInicio() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:3000/api/Usuarios/login",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json",
+      "cache-control": "no-cache",
+      "postman-token": "98b31ce1-3448-95c4-11af-cbfc1270e4c8"
+    },
+    "processData": false,
+    "data": "{\n\"email\":\""+localStorage.email+"\",\n\"password\":\""+localStorage.contraseña+"\"\n}"
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 
 
