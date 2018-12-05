@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="wigth=sevice-width, initial-scale=1, shrink-to-tfit=no">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script src="js/loggin.js"></script>
     <script src="js/usuarioLogueado.js"></script>
 
@@ -50,25 +52,36 @@
         <center><label class="h4">Datos personales</label></center>
        <br>
 
-       <form action="php/bouchers.php" method="post">
+       <form>
            <div class="form-row justify-content-md-center">
                <div class="col-md-4 mb-3">
                    <label for="pedido">Nombre: </label> 
-                   <input class="form-control" type="text" >        
+                   <input class="form-control"id="nombre" type="text" >        
                </div>
                <div class="col-md-4 mb-3">
                    <label for="pedido">Apellidos: </label> 
-                   <input class="form-control" type="text">        
+                   <input class="form-control" id="Apellidos" type="text">        
                </div>
            </div>
            <div class="form-row justify-content-md-center">
+            <div class="col-md-3 mb-3">
+                <label for="">Correo</label>
+                <input  class="form-control"id="correo">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="">Verifica correo</label>
+                <input  class="form-control" >
+            </div>
+            
+        </div>
+           <div class="form-row justify-content-md-center">
                <div class="col-md-3 mb-3">
                    <label for="">Contraseña</label>
-                   <input type="password" class="form-control">
+                   <input type="password" class="form-control"id="password">
                </div>
                <div class="col-md-3 mb-3">
                    <label for="">Verifica contraseña</label>
-                   <input type="password" class="form-control">
+                   <input type="password" class="form-control" >
                </div>
                
            </div>
@@ -77,45 +90,45 @@
         <center><label class="h4">Datos de tu sucursal</label></center>
        <br>
 
-       <form action="php/bouchers.php" method="post">
+       <form >
            <div class="form-row justify-content-md-center">
                <div class="col-md-12 mb-3">
                    <label for="pedido">Nombre: </label> 
-                   <input class="form-control" type="text">        
+                   <input class="form-control" type="text"id="nombreSucursal">        
                </div>
                <div class="col-md-4 mb-3">
                    <label for="pedido">Calle: </label> 
-                   <input class="form-control" type="text" >        
+                   <input class="form-control" type="text"id="calle" >        
                </div>
                <div class="col-md-4 mb-3">
                 <label for="pedido">Colonia: </label> 
-                <input class="form-control" type="text" >        
+                <input class="form-control" type="text" id="colonia">        
             </div>
             <div class="col-md-4 mb-3">
                 <label for="pedido">Codigo postal: </label> 
-                <input class="form-control" type="text" >        
+                <input class="form-control" type="text"id="CP" >        
             </div>
             <div class="col-md-4 mb-3">
                 <label for="pedido">Ciudad: </label> 
-                <input class="form-control" type="text" >        
+                <input class="form-control" type="text" id="ciudad"">        
             </div>
             <div class="col-md-4 mb-3">
                 <label for="pedido">Estado: </label> 
-                <input class="form-control" type="text" >        
+                <input class="form-control" type="text" id="estado">        
             </div>
            </div>
            <div class="form-row justify-content-md-center">
                <div class="col-md-3 mb-3">
                    <label for="">Telefono:</label>
-                   <input type="text" class="form-control">
+                   <input type="text" class="form-control" id="telefono">
                </div>
                
            </div>
-           <center><button class="btn btn-primary" type="submit">Aceptar</button></center>
+           <center></center>
            <br>
            
        </form>
-
+       <button class="btn btn-primary" id="enviarU">Aceptar</button>
 
    </div>
 </center>
@@ -123,12 +136,6 @@
     <!-- Copyright e informacion adicional -->
 <br>
     
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src = "js/bootstrap.min.js"></script>
-</body>
 <footer class="text-center footer-style">
        <br>
         <div class="container" style="background: white">
@@ -147,4 +154,10 @@
             </div>
         </div>
     </footer>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src = "js/bootstrap.min.js"></script>
+</body>
 </html>

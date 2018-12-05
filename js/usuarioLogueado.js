@@ -20,7 +20,6 @@ if(localStorage.token!="null" && this.localStorage.token!=undefined && this.loca
     });
     
 $(".SI").on("click",function () {
-    console.log(";;;");
     cerrarSesion();
     localStorage.email=null;
     localStorage.contraseña=null;
