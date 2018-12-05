@@ -62,7 +62,7 @@ function sucursales() {
         "url": "http://localhost:3000/api/Sucursals",
         "method": "GET",
         "headers": {
-          "Authorization": "cyBJCrcNKSvE5jvjO5WYoVbPlIUYEX3fDhZCUWJ0sQivLKXyf3NDoisIZwA6kKCl",
+          "Authorization": localStorage.token,
           "Content-Type": "application/json",
           "cache-control": "no-cache",
           "Postman-Token": "dfa4248b-6784-495a-a3ab-3a016ed8edd1"

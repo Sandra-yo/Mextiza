@@ -25,7 +25,7 @@ function listarTabla() {
       }
       
       $.ajax(settings).done(function (response) {
-        console.log(response);
+        console.log(response[0]);
         console.log(response[0].producto.nombre);
         for (let index = 0; index < response.length; index++) {
             $("tbody").append("<tr id="+response[index].id+">"+
