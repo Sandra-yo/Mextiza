@@ -1,0 +1,12 @@
+{
+    "include":[
+        {
+            "relation":"pedido",
+            "scope":{
+                "include":"sucursal"
+            }
+        },{
+            "relation":"producto"
+        }
+    ]
+}
