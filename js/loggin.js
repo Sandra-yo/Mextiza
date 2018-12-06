@@ -42,7 +42,7 @@ function nuevoUsuario() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://165.227.30.250:3300/api/Usuarios",
+    "url": "http://localhost:3000/api/Usuarios",
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
@@ -56,12 +56,14 @@ function nuevoUsuario() {
     console.log(response);
     localStorage.email=correo;
     localStorage.contraseña=pass;
-    localStorage="";
+    localStorage.usuarioId=response['userId'];
     primerInicio();
     var time =setInterval(function () {
       
-      if(localStorage.token!="" && localStorage.token!=undefined && localStorage.token!="undefined"){
+      if(localStorage.token!="" && localStorage.token!=undefined && localStorage.token!="undefined" &&localStorage.usuarioId!="undefined"){
+        
         clearInterval(time);
+        
         sucursal(nS);
         cerrarSesion();
         localStorage.token="";
@@ -79,7 +81,7 @@ function numeroi(numero) {
   var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://165.227.30.250:3300/api/Telefonos",
+  "url": "http://localhost:3000/api/Telefonos",
   "method": "POST",
   "headers": {
     "content-type": "application/json",
@@ -100,7 +102,7 @@ function direccion(calle,colonia,cp,ciudad,estado) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://165.227.30.250:3300/api/Direccions",
+    "url": "http://localhost:3000/api/Direccions",
     "method": "POST",
     "headers": {
       "content-type": "application/json",
@@ -126,7 +128,7 @@ form.append("password", localStorage.contraseña);
 var settings = {
 "async": true,
 "crossDomain": true,
-"url": "http://165.227.30.250:3300/api/Usuarios/logout",
+"url": "http://localhost:3000/api/Usuarios/logout",
 "method": "POST",
 "headers": {
   "authorization": localStorage.token,
@@ -141,7 +143,6 @@ var settings = {
 
 $.ajax(settings).done(function (response) {
 console.log(response);
-localStorage.token=null;
 
 });
   
@@ -154,7 +155,7 @@ form.append("id", localStorage.usuarioId);
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://165.227.30.250:3300/api/Usuarios/"+localStorage.usuarioId,
+  "url": "http://localhost:3000/api/Usuarios/"+localStorage.usuarioId,
   "method": "GET",
   "headers": {
     "Authorization": localStorage.token,
@@ -185,7 +186,7 @@ function sucursal(nombre) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://165.227.30.250:3300/api/Sucursals",
+    "url": "http://localhost:3000/api/Sucursals",
     "method": "POST",
     "headers": {
       "Authorization": localStorage.token,
@@ -199,13 +200,14 @@ function sucursal(nombre) {
   
   $.ajax(settings).done(function (response) {
     console.log(response);
+    
   });
 }
 function primerInicio() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://165.227.30.250:3300/api/Usuarios/login",
+    "url": "http://localhost:3000/api/Usuarios/login",
     "method": "POST",
     "headers": {
       "content-type": "application/json",
@@ -231,7 +233,7 @@ function iniciarSesion() {
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://165.227.30.250:3300/api/Usuarios/login",
+  "url": "http://localhost:3000/api/Usuarios/login",
   "method": "POST",
   "headers": {
     "content-type": "application/x-www-form-urlencoded",
@@ -263,5 +265,7 @@ $.ajax(settings).done(function (response) {
   console.log(localStorage.tipoUsuario);
  // alert(localStorage.tipoUsuario);
 
+}).fail(function () {
+  alert("Datos incorrectos");
 });
 }

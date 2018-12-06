@@ -62,7 +62,10 @@ function activa() {
         var añoP=fecha.getFullYear();
         localStorage.fechaPedido=diaP+"/"+mesP+"/"+añoP;
     ordenemos();
-     
+    setTimeout(() => {
+        
+     location.href="Productos.html"
+    }, 2000);
     });
     
 
@@ -72,7 +75,7 @@ function activa() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://165.227.30.250:3300/api/Pedidos",
+            "url": "http://localhost:3000/api/Pedidos",
             "method": "POST",
             "headers": {
               "Authorization": localStorage.token,
@@ -110,7 +113,7 @@ function activa() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://165.227.30.250:3300/api/Productos",
+            "url": "http://localhost:3000/api/Productos",
             "method": "GET",
             "headers": {
               "authorization": localStorage.token,
@@ -131,7 +134,7 @@ function productosPedido(cant,pedido,producto) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://165.227.30.250:3300/api/ProductoPedidos",
+        "url": "http://localhost:3000/api/ProductoPedidos",
         "method": "POST",
         "headers": {
           "Authorization": localStorage.token,
@@ -145,6 +148,8 @@ function productosPedido(cant,pedido,producto) {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
+
+     
       });
     
 }

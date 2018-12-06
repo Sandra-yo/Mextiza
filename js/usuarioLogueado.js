@@ -56,10 +56,11 @@ $("#ordenar").on("click",function() {
 
 
 function sucursales() {
+    alert("Bienvenido");
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://165.227.30.250:3300/api/Sucursals",
+        "url": "http://localhost:3000/api/Sucursals",
         "method": "GET",
         "headers": {
           "Authorization": localStorage.token,
