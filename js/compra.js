@@ -72,7 +72,7 @@ function activa() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Pedidos",
+            "url": "http://165.227.30.250:3300/api/Pedidos",
             "method": "POST",
             "headers": {
               "Authorization": localStorage.token,
@@ -102,12 +102,14 @@ function activa() {
          }
             
           });
+          
+         // location.href="Productos.html";
     }
     function vistaProductos() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Productos",
+            "url": "http://165.227.30.250:3300/api/Productos",
             "method": "GET",
             "headers": {
               "authorization": localStorage.token,
@@ -128,7 +130,7 @@ function productosPedido(cant,pedido,producto) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/api/ProductoPedidos",
+        "url": "http://165.227.30.250:3300/api/ProductoPedidos",
         "method": "POST",
         "headers": {
           "Authorization": localStorage.token,
@@ -137,7 +139,7 @@ function productosPedido(cant,pedido,producto) {
           "Postman-Token": "1ca060de-a959-4d3d-9ea9-e627941fcc46"
         },
         "processData": false,
-        "data": "{\n  \"cantidad\": "+cant+",\n  \"pedidoId\": "+pedido+",\n  \"productoId\": "+producto+"\n}"
+        "data": "{\n  \"cantidad\":  \""+cant+"\",\n  \"pedidoId\":  \""+pedido+"\",\n  \"productoId\":  \""+producto+"\"\n}"
       }
       
       $.ajax(settings).done(function (response) {

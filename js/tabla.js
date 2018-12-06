@@ -12,7 +12,7 @@ function listarTabla() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/api/ProductoPedidos?filter={%20%20%20%20%20%22include%22:[%20%20%20%20%20%20%20%20%20{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22pedido%22,%20%20%20%20%20%20%20%20%20%20%20%20%20%22scope%22:{%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22include%22:%22sucursal%22%20%20%20%20%20%20%20%20%20%20%20%20%20}%20%20%20%20%20%20%20%20%20},{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22producto%22%20%20%20%20%20%20%20%20%20}%20%20%20%20%20]%20}",
+        "url": "http://165.227.30.250:3300/api/ProductoPedidos?filter={%20%20%20%20%20%22include%22:[%20%20%20%20%20%20%20%20%20{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22pedido%22,%20%20%20%20%20%20%20%20%20%20%20%20%20%22scope%22:{%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22include%22:%22sucursal%22%20%20%20%20%20%20%20%20%20%20%20%20%20}%20%20%20%20%20%20%20%20%20},{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22producto%22%20%20%20%20%20%20%20%20%20}%20%20%20%20%20]%20}",
         "method": "GET",
         "headers": {
           "Authorization": localStorage.token,
@@ -25,9 +25,11 @@ function listarTabla() {
       }
       
       $.ajax(settings).done(function (response) {
-        console.log(response[0]);
+        console.log(response);
         console.log(response[0].producto.nombre);
         for (let index = 0; index < response.length; index++) {
+            console.log("::");
+            
             $("tbody").append("<tr id="+response[index].id+">"+
                 "<td>"+response[index].pedido.id+"</td>"+
                 "<td id=distribuidor>"+response[index].pedido.sucursal.nombre+"</td>"+
@@ -61,21 +63,3 @@ function listarTabla() {
 
 
 }
-/**$("tbody").append("<tr id="+localStorage.idT+">"+
-                "<td>"+localStorage.idT+"</td>"+
-                "<td id=distribuidor></td>"+
-                "<td>"+localStorage.fechaT+"</td>"+
-                "<td>BD</td>"+
-                "<td>BD</td>" + 
-                "<td>"+
-                "<div class='form-check'>"+
-                "<input class = 'form-check-input' type='checkbox' disabled "+check+"><label class='form-check-label' for='defaultCheck1'>Autorizado</label> "+   
-                "</div>"+
-                "</td>"+
-                "<td>"+
-                "<center>"+
-                "<button class='btn btn-success'>Autorizar</button>"+
-                "</center>"+
-                "</td>"               
-             
-             +"</tr>"); */

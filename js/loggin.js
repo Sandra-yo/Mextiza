@@ -25,6 +25,7 @@ $("#nuevoDist").on("click",function () {
 
 }
 function nuevoUsuario() {
+  
   var nombre=$("#nombre").val()+" "+$("#Apellidos").val();
   var correo=$("#correo").val();
   var pass=$("#password").val();
@@ -34,12 +35,14 @@ function nuevoUsuario() {
   var cp=$("#CP").val();
   var ciudad=$("#ciudad").val();
   var estado=$("#estado").val();
-  
+  var nS=$("#nombreSucursal").val();
+  numeroi(numero);
+  direccion(calle,colonia,cp,ciudad,estado);
 
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Usuarios",
+    "url": "http://165.227.30.250:3300/api/Usuarios",
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
@@ -47,17 +50,25 @@ function nuevoUsuario() {
       "Postman-Token": "38041391-0ae4-4152-991e-8dfdae39bdd0"
     },
     "processData": false,
-    "data": "{\n  \"realm\": \"Distribuidor\",\n  \"username\": \""+nombre+"\",\n  \"email\": \""+correo+"\",\n  \"direccionId\": \"string\",\n  \"telefonoId\": \"string\",\n  \"password\": \""+pass+"\"\n}"
+    "data": "{\n  \"realm\": \"Distribuidor\",\n  \"username\": \""+nombre+"\",\n  \"email\": \""+correo+"\",\n  \"direccionId\": \""+localStorage.direccionid+"\",\n  \"telefonoId\": \""+localStorage.telefonoid+"\",\n  \"password\": \""+pass+"\"\n}"
   }
   $.ajax(settings).done(function (response) {
     console.log(response);
     localStorage.email=correo;
     localStorage.contraseña=pass;
+    localStorage="";
     primerInicio();
-    numeroi(numero);
-    direccion(calle,colonia,cp,ciudad,estado);
-    modificaUsu(nombre,correo);
-    alert("Usuario creado exitosamente");
+    var time =setInterval(function () {
+      
+      if(localStorage.token!="" && localStorage.token!=undefined && localStorage.token!="undefined"){
+        clearInterval(time);
+        sucursal(nS);
+        cerrarSesion();
+        localStorage.token="";
+        alert("Usuario creado exitosamente");
+      }
+    },100);
+   
     
     }).fail(function(response){
       console.log(response.password);
@@ -68,7 +79,7 @@ function numeroi(numero) {
   var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Telefonos",
+  "url": "http://165.227.30.250:3300/api/Telefonos",
   "method": "POST",
   "headers": {
     "content-type": "application/json",
@@ -89,7 +100,7 @@ function direccion(calle,colonia,cp,ciudad,estado) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Direccions",
+    "url": "http://165.227.30.250:3300/api/Direccions",
     "method": "POST",
     "headers": {
       "content-type": "application/json",
@@ -106,27 +117,6 @@ function direccion(calle,colonia,cp,ciudad,estado) {
     localStorage.direccionid=response['id'];
   });
 }
-function modificaUsu(nombre,correo) {
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost:3000/api/Usuarios/"+localStorage.usuarioId,
-    "method": "PUT",
-    "headers": {
-      "content-type": "application/json",
-      "authorization": localStorage.token,
-      "cache-control": "no-cache",
-      "postman-token": "8befc8b0-8ce3-421f-d4ab-cdb71b259d11"
-    },
-    "processData": false,
-    "data": "{\n  \"realm\": \"Distribuidor\",\n  \"username\": \""+nombre+"\",\n  \"email\": \""+correo+"\",\n  \"id\": \""+localStorage.userId+"\",\n  \"direccionId\": \""+localStorage.direccionid+"\",\n  \"telefonoId\": \""+localStorage.telefonoid+"\",\n  \"password\":\""+localStorage.contraseña+"\"\n}"
-  }
-  
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
-}
-
 
 function cerrarSesion() {
   var form = new FormData();
@@ -136,7 +126,7 @@ form.append("password", localStorage.contraseña);
 var settings = {
 "async": true,
 "crossDomain": true,
-"url": "http://localhost:3000/api/Usuarios/logout",
+"url": "http://165.227.30.250:3300/api/Usuarios/logout",
 "method": "POST",
 "headers": {
   "authorization": localStorage.token,
@@ -152,19 +142,19 @@ var settings = {
 $.ajax(settings).done(function (response) {
 console.log(response);
 localStorage.token=null;
-console.log("log out");
 
 });
   
 }
+
 function identificacionUsuarios() {
-    var form = new FormData();
+var form = new FormData();
 form.append("id", localStorage.usuarioId);
 
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Usuarios/"+localStorage.usuarioId,
+  "url": "http://165.227.30.250:3300/api/Usuarios/"+localStorage.usuarioId,
   "method": "GET",
   "headers": {
     "Authorization": localStorage.token,
@@ -187,16 +177,34 @@ $.ajax(settings).done(function (response) {
 }).fail(function(response){
   console.log(response);
   
-  //localStorage.tipoUsuario="proveedor";
-  
   
 });
+}
+function sucursal(nombre) {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://165.227.30.250:3300/api/Sucursals",
+    "method": "POST",
+    "headers": {
+      "Authorization": localStorage.token,
+      "Content-Type": "application/json",
+      "cache-control": "no-cache",
+      "Postman-Token": "abdf03ce-7255-423b-915f-887e2e24c50b"
+    },
+    "processData": false,
+    "data": "{\n  \"nombre\": \""+nombre+"\",\n  \"usuarioId\": \""+localStorage.usuarioId+"\",\n  \"direccionId\": \""+localStorage.direccionid+"\",\n  \"telefonoId\": \""+localStorage.telefonoid+"\"\n}"
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 function primerInicio() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Usuarios/login",
+    "url": "http://165.227.30.250:3300/api/Usuarios/login",
     "method": "POST",
     "headers": {
       "content-type": "application/json",
@@ -209,6 +217,8 @@ function primerInicio() {
   
   $.ajax(settings).done(function (response) {
     console.log(response);
+    localStorage.token=response['id'];
+    localStorage.usuarioId=response['userId']
   });
 }
 
@@ -220,7 +230,7 @@ function iniciarSesion() {
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Usuarios/login",
+  "url": "http://165.227.30.250:3300/api/Usuarios/login",
   "method": "POST",
   "headers": {
     "content-type": "application/x-www-form-urlencoded",
@@ -241,7 +251,6 @@ $.ajax(settings).done(function (response) {
   var time=setInterval(function() {
     if(localStorage.tipoUsuario!=""){
       clearInterval(time);
-      alert(localStorage.tipoUsuario);
       if(localStorage.tipoUsuario=="proveedor"){
         location.href = "Administrador/pedidos.html";
       }else{
