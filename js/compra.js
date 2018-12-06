@@ -106,6 +106,7 @@ function activa() {
          // location.href="Productos.html";
     }
     function vistaProductos() {
+        alert("orden realizada")
         var settings = {
             "async": true,
             "crossDomain": true,

@@ -181,6 +181,7 @@ $.ajax(settings).done(function (response) {
 });
 }
 function sucursal(nombre) {
+  alert("sucursal creada");
   var settings = {
     "async": true,
     "crossDomain": true,
