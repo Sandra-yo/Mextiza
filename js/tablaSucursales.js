@@ -7,7 +7,7 @@ function tabla() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/api/Sucursals?filter=%7B%22include%22%3A%5B%22usuario%22%2C%22telefono%22%2C%22direccion%22%5D%7D",
+        "url": "http://165.227.30.250:3300/api/Sucursals?filter=%7B%22include%22%3A%5B%22usuario%22%2C%22telefono%22%2C%22direccion%22%5D%7D",
         "method": "GET",
         "headers": {
           "authorization": localStorage.token,
@@ -68,7 +68,7 @@ function borrar(id) {
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Sucursals/"+id,
+  "url": "http://165.227.30.250:3300/api/Sucursals/"+id,
   "method": "DELETE",
   "headers": {
     "authorization": localStorage.token,
@@ -90,7 +90,7 @@ function existencia(idSucur) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/api/Sucursals/"+idSucur+"/pedido",
+        "url": "http://165.227.30.250:3300/api/Sucursals/"+idSucur+"/pedido",
         "method": "GET",
         "headers": {
           "authorization": localStorage.token,

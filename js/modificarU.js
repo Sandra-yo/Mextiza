@@ -4,7 +4,7 @@ window.onload=function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Sucursals/"+localStorage.idModificar+"?filter={%20%20%20%20%20%22include%22:[%22usuario%22,%22direccion%22,%22telefono%22]%20}&=",
+            "url": "http://165.227.30.250:3300/api/Sucursals/"+localStorage.idModificar+"?filter={%20%20%20%20%20%22include%22:[%22usuario%22,%22direccion%22,%22telefono%22]%20}&=",
             "method": "GET",
             "headers": {
               "Authorization": localStorage.token,
@@ -60,7 +60,7 @@ window.onload=function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Usuarios/"+id,
+            "url": "http://165.227.30.250:3300/api/Usuarios/"+id,
             "method": "PUT",
             "headers": {
               "Authorization": localStorage.token,
@@ -80,7 +80,7 @@ window.onload=function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Sucursals/"+id,
+            "url": "http://165.227.30.250:3300/api/Sucursals/"+id,
             "method": "PUT",
             "headers": {
               "Authorization": localStorage.token,
@@ -101,7 +101,7 @@ window.onload=function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Direccions/"+id,
+            "url": "http://165.227.30.250:3300/api/Direccions/"+id,
             "method": "PUT",
             "headers": {
               "Authorization": localStorage.token,
@@ -121,7 +121,7 @@ window.onload=function () {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Telefonos/"+id,
+            "url": "http://165.227.30.250:3300/api/Telefonos/"+id,
             "method": "PUT",
             "headers": {
               "Authorization": localStorage.token,

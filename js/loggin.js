@@ -53,7 +53,7 @@ function nuevoUsuario() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Usuarios",
+    "url": "http://165.227.30.250:3300/api/Usuarios",
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function numeroi(numero) {
   var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Telefonos",
+  "url": "http://165.227.30.250:3300/api/Telefonos",
   "method": "POST",
   "headers": {
     "content-type": "application/json",
@@ -113,7 +113,7 @@ function direccion(calle,colonia,cp,ciudad,estado) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Direccions",
+    "url": "http://165.227.30.250:3300/api/Direccions",
     "method": "POST",
     "headers": {
       "content-type": "application/json",
@@ -140,7 +140,7 @@ form.append("password", localStorage.contraseña);
 var settings = {
 "async": true,
 "crossDomain": true,
-"url": "http://localhost:3000/api/Usuarios/logout",
+"url": "http://165.227.30.250:3300/api/Usuarios/logout",
 "method": "POST",
 "headers": {
   "authorization": localStorage.token,
@@ -174,7 +174,7 @@ form.append("id", localStorage.usuarioId);
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Usuarios/"+localStorage.usuarioId,
+  "url": "http://165.227.30.250:3300/api/Usuarios/"+localStorage.usuarioId,
   "method": "GET",
   "headers": {
     "Authorization": localStorage.token,
@@ -205,7 +205,7 @@ function sucursal(nombre) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Sucursals",
+    "url": "http://165.227.30.250:3300/api/Sucursals",
     "method": "POST",
     "headers": {
       "Authorization": localStorage.token,
@@ -226,7 +226,7 @@ function primerInicio() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:3000/api/Usuarios/login",
+    "url": "http://165.227.30.250:3300/api/Usuarios/login",
     "method": "POST",
     "headers": {
       "content-type": "application/json",
@@ -252,7 +252,7 @@ function iniciarSesion() {
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:3000/api/Usuarios/login",
+  "url": "http://165.227.30.250:3300/api/Usuarios/login",
   "method": "POST",
   "headers": {
     "content-type": "application/x-www-form-urlencoded",
