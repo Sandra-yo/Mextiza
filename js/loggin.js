@@ -1,7 +1,18 @@
 window.onload = function() {
-$("#loggin").on("click", function () {  
+ var x= setInterval(function() {
+   
+  if($("#loggin").length!=0){
+clearInterval(x);
+$("#loggin").on("click", function () {
+  console.log("::");
+    if(!location.href.includes("Administrador")){
+
   location.href = "login.html";
+    }
 });
+  }
+ });
+
 $("#hist").on("click", function () {  
   location.href = "Historia.html";
 });
@@ -121,6 +132,7 @@ function direccion(calle,colonia,cp,ciudad,estado) {
 }
 
 function cerrarSesion() {
+  alert("cerrando sesion");
   var form = new FormData();
 form.append("email", localStorage.email);
 form.append("password", localStorage.contraseña);
@@ -143,8 +155,15 @@ var settings = {
 
 $.ajax(settings).done(function (response) {
 console.log(response);
+localStorage.token="";
+localStorage.sucursalId=""
 
-});
+}).fail(function (response) {
+  console.log(response);
+  localStorage.token="";
+  localStorage.sucursalId=""
+  
+  });
   
 }
 

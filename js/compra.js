@@ -29,11 +29,12 @@ function activa() {
         localStorage.email=null;
         localStorage.contraseña=null;
         localStorage.token=null;
+        localStorage.sucursalId=null;
     
        
         setTimeout(() => {
              location.href = "index.html";
-        }, 1000);
+        }, 2000);
     
       });
     
@@ -49,12 +50,16 @@ function activa() {
      
             $("#loggin").on("click", function () {  
                 
-                location.href = "login.html";
+             //   location.href = "login.html";
            });
           console.log(";");
           
             }
-        
+        $("#pendiente").on("click",function (params) {
+            location.href="Productos.html";
+            console.log(":W");
+            
+        });
     $("#ordenar").on("click",function () {
         var fecha=new Date();
         var diaP=fecha.getDate();
@@ -92,19 +97,26 @@ function activa() {
             var cMacha=$("#cantMacha").val();
             var cSanM=$("#cantSM").val();
 
+            var cuenta=0 ;
             if(!cMacha==""){
+                cuenta+=parseInt(cMacha);
                 console.log(cMacha+"-- "+response.id+"--"+localStorage.SalsaM);
                 
                 productosPedido(cMacha,response.id,localStorage.SalsaM);
                
             }
             if(!cSanM==""){
+                cuenta+=parseInt(cSanM);
                 console.log(cSanM+"-- "+response.id+"--"+localStorage.SalsaSM);
 
                 productosPedido(cSanM,response.id,localStorage.SalsaSM);
          }
-            
+            cuenta=cuenta*80;
+            alert("Su numero de orden es: "+response.id+
+              " su total a pagar es :"+cuenta
+              );
           });
+              
           
          // location.href="Productos.html";
     }

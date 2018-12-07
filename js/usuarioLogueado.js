@@ -1,6 +1,7 @@
 function usuario() {
 window.onload = function() {  
-console.log("::::");
+    console.log(":s");
+    
 
 if(localStorage.token!="null" && this.localStorage.token!=undefined && this.localStorage.token!="undefined"){
     console.log(":::");
@@ -39,7 +40,8 @@ $(".SI").on("click",function () {
         $("#compras").css("display","none");
         
 $("#ordenar").on("click",function() {
-    console.log(":3");
+    console.log
+    alert("cerrando sesion");(":3");
     
 });
  

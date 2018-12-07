@@ -30,6 +30,8 @@ function tabla() {
                 "<td>"+
                 "<center>"+
                 "<button id='baja' index='"+response[index].id+"' class='btn btn-danger'>Dar de baja</button>"+
+                
+                "<button id='modifica' index='"+response[index].id+"' class='btn btn-success'>Modificar</button>"+
                 "</center>"+
                 "</td>"               
              
@@ -45,10 +47,18 @@ btnFuncion();
     }
 },1000);
 
+
 function btnFuncion() {
     $(".btn-danger").on("click",function () {
       //  console.log($(this).attr("index"));
        existencia($(this).attr("index"));
+
+    });
+    $(".btn-success").on("click",function () {
+       console.log($(this).attr('index'));
+       localStorage.idModificar=$(this).attr('index');
+       
+       location.href="modificaUsuarios.html";
 
     });
 }

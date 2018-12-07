@@ -51,7 +51,8 @@ function listarTabla() {
             
         }
         
-      });   
+      });
+         
       var time = this.setInterval(function name() {
        
         
