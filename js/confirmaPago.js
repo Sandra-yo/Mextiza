@@ -25,7 +25,7 @@ window.onload=function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Pedidos/"+id,
+            "url": "http://165.227.30.250:3300/api/Pedidos/"+id,
             "method": "GET",
             "headers": {
               "Authorization": localStorage.token,
@@ -48,7 +48,7 @@ window.onload=function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Pedidos/"+id,
+            "url": "http://165.227.30.250:3300/api/Pedidos/"+id,
             "method": "PUT",
             "headers": {
               "Content-Type": "application/json",

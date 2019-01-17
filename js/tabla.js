@@ -5,7 +5,7 @@ function listarTabla() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/api/ProductoPedidos?filter={%20%20%20%20%20%22include%22:[%20%20%20%20%20%20%20%20%20{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22pedido%22,%20%20%20%20%20%20%20%20%20%20%20%20%20%22scope%22:{%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22include%22:%22sucursal%22%20%20%20%20%20%20%20%20%20%20%20%20%20}%20%20%20%20%20%20%20%20%20},{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22producto%22%20%20%20%20%20%20%20%20%20}%20%20%20%20%20]%20}",
+        "url": "http://165.227.30.250:3300/api/ProductoPedidos?filter={%20%20%20%20%20%22include%22:[%20%20%20%20%20%20%20%20%20{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22pedido%22,%20%20%20%20%20%20%20%20%20%20%20%20%20%22scope%22:{%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22include%22:%22sucursal%22%20%20%20%20%20%20%20%20%20%20%20%20%20}%20%20%20%20%20%20%20%20%20},{%20%20%20%20%20%20%20%20%20%20%20%20%20%22relation%22:%22producto%22%20%20%20%20%20%20%20%20%20}%20%20%20%20%20]%20}",
         "method": "GET",
         "headers": {
           "Authorization": localStorage.token,
@@ -77,7 +77,7 @@ function listarTabla() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3000/api/Pedidos/"+id,
+            "url": "http://165.227.30.250:3300/api/Pedidos/"+id,
             "method": "PUT",
             "headers": {
               "authorization": localStorage.token,
