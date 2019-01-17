@@ -14,7 +14,7 @@ function activa() {
        console.log(localStorage.token=="null");
         console.log(
          $("#loggin a").html("Cerrar sesion"));
-        $("#loggin").addClass("SI");
+     //   $("#loggin").addClass("SI");
         $("#compras").css("display","block");
     
         $("#compras").on("click",function () {
@@ -33,13 +33,12 @@ function activa() {
     
        
         setTimeout(() => {
-             location.href = "index.html";
+           //  location.href = "index.html";
         }, 2000);
     
       });
     
         }else{
-            console.log(";E");
             $("#loggin a").html("Iniciar sesion");
             $("#loggin").removeClass("SI");
             $("#compras").css("display","none");

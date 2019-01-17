@@ -132,7 +132,7 @@ function direccion(calle,colonia,cp,ciudad,estado) {
 }
 
 function cerrarSesion() {
-  alert("cerrando sesion");
+//  alert("cerrando sesion");
   var form = new FormData();
 form.append("email", localStorage.email);
 form.append("password", localStorage.contraseña);
@@ -243,7 +243,11 @@ function primerInicio() {
     localStorage.usuarioId=response['userId']
   });
 }
-
+//provisional <---------------------
+function cerrarS() {
+ 
+  localStorage.token="null";
+}
 
 function iniciarSesion() {
    localStorage.tipoUsuario="";

@@ -21,14 +21,15 @@ if(localStorage.token!="null" && this.localStorage.token!=undefined && this.loca
     });
     
 $(".SI").on("click",function () {
+   
     cerrarSesion();
     localStorage.email=null;
     localStorage.contraseña=null;
-    localStorage.token=null;
+    localStorage.token="null";
 
    
     setTimeout(() => {
-         location.href = "index.html";
+       //  location.href = "index.html";
     }, 1000);
 
   });
@@ -58,7 +59,7 @@ $("#ordenar").on("click",function() {
 
 
 function sucursales() {
-    alert("Bienvenido");
+   // alert("Bienvenido");
     var settings = {
         "async": true,
         "crossDomain": true,
